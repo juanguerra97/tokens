@@ -82,7 +82,11 @@ public class Controller {
 			btnNewToken.setDisable(newText.isEmpty() || 
 					tokens.stream().anyMatch(t -> t.equalsIgnoreCase(newText)));
 		});
-		fieldNewToken.setOnAction(e -> onNuevoToken(e));
+		fieldNewToken.setOnAction(e -> {
+			if(!btnNewToken.isDisable()) {
+				onNuevoToken(e);
+			}
+		});
 		
 		areaTexto.textProperty().addListener((ob,viejo,nuevo)->{
 			btnBuscarTokens.setDisable(nuevo.trim().isEmpty());
